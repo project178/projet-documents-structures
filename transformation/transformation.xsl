@@ -24,7 +24,7 @@
                     <availability><licence><xsl:attribute name="target"><xsl:value-of select="$meta/meta:user-defined[@meta:name='Licence']"/></xsl:attribute></licence></availability>
                     <date>
                         <xsl:attribute name="when"><xsl:value-of select="$meta/meta:user-defined[@meta:name='Date de la source']"/></xsl:attribute>
-                        <xsl:value-of select="$meta/meta:user-defined[@meta:name='Date de publication']"/>
+                        <xsl:value-of select="$meta/meta:user-defined[@meta:name='Date de publication' or @meta:name='Date de la publication' ]"/>
                     </date>
                 </publicationStmt>
                 <sourceDesc>
