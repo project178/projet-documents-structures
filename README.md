@@ -20,7 +20,11 @@ brew install unzip
 brew install saxon
 ```
 
+## Partie 2
+
+Un site avec 3 page : une page d'accueil générée par XSLT du XML qui est vérifié avec une schema RelaxNG, page de recherche et page avec un rendu graphique. 
+
 ### Résultats
 
-Voici un exemple du document XML final.
-![Voici un exemple du document XML final.](https://github.com/project178/trash/blob/master/example.png)
+Voici un exemple de recherche sur le site.
+![Recherche des mots "Madame" et "le" en appliquant des divers filtres](https://github.com/project178/trash/blob/master/demo.gif)

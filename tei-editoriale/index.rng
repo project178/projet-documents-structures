@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  
+  <start>
+        <element name="description">
+            <oneOrMore>
+                <ref name="section"/>
+            </oneOrMore>
+        </element>
+    </start>
+  
+  
+  <define name="url">
+        <attribute name="url">
+            <data type="anyURI"/>
+        </attribute>
+    </define>
+  <define name="title">
+        <element name="head">
+            <text/>
+        </element>
+    </define>
+  <define name="body">
+        <oneOrMore>
+            <ref name="paragraph"/>
+        </oneOrMore>
+    </define>
+  
+  <define name="link">
+        <element name="link">
+      <ref name="url"/>
+      <text/>
+  </element>
+    </define>
+  
+  <define name="paragraph">
+        <element name="p">
+            <oneOrMore>
+                <choice>
+          <text/>
+          <ref name="link"/>
+  </choice>
+            </oneOrMore>
+        </element>
+    </define>
+  
+  <define name="section">
+    <element name="section">
+      <ref name="title"/>
+      <ref name="body"/>
+    </element>
+  </define>
+  
+</grammar>

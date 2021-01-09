@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="index.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<description>
+    <section>
+        <head>Description du projet</head>
+        <p>L’objectif de ce projet est de réaliser une chaîne de traitement pour la publication de documents en ligne. À partir de documents fournis,  un site web présente le contenu de ces documents et permet d'interagir avec eux.</p>
+        <p>Le projet se compose de deux grandes étapes.</p>
+        <p>La première étape consiste en transformation des documents au format OpenDocument en document XML en utilisant XSLT et selon le standard de la Text Encoding Initiative (TEI). La schéma RelaxNG permet de valider la structure.</p>
+        <p>La deuxième étape consiste en réalisation d'un site internet à l’aide de xquery et xslt.</p>
+    </section>
+    <section>
+        <head>Navigation sur le site</head>
+        <p>Ce site est composé de 3 pages: <link url="http://localhost:8080/exist/apps/tei-editoriale/index.html">une page d'accueil</link>, <link url="http://localhost:8080/exist/apps/tei-editoriale/search.html">une page de recherche</link> et <link url="http://localhost:8080/exist/apps/tei-editoriale/visual.html">une page avec un rendu graphique.</link>
+        </p>
+        <p>Sur la page d'accueil il y a une déscription de ce projet.</p>
+        <p>La page de recherche permet de rechercher un mot ou une chaîne des mots dans les fichiers XML mentionés plus haut. Les résultats de recherche peuvent être filtrés selon le document, son auteur, la date de création d'un œvre littéraire ou la date de publication. Les résultats de recherche sont des paragraphes qui contiennent une requête de l'utilisateur. L'auteur et le nom du livre sont aussi affichés et le mot recherché est surligné.</p>
+        <p>La page avec un rendu graphique sert à afficher des documents entiers. D'abord il y a des noms des livres. Si on clique sur un d'eux, ses parties vont être affichées. Si après on clique sur une partie, ses chapîtres vont être affichées. Si, enfin, on clique sur une chapître, un texte va s'afficher. Et vice-versa, si on clique sur l'en-tête du texte affiché, il va se fermer.</p>
+    </section>
+    <section>
+        <head>Les difficultés rencontrées</head>
+        <p>Les documents ont des structures un peu différents. Par exemple, un des documents n'a pas de parties, juste des chapîtres.</p>
+        <p>Un autre problème est l'application des CSS. Le fichier par défaut ne marche pas.</p>
+    </section>
+</description>

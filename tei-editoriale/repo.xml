@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="http://exist-db.org/xquery/repo">
+    <description>projet-documents-structures</description>
+    <author>Borovikova Mariya</author>
+    <website/>
+    <status>alpha</status>
+    <license>GNU-LGPL</license>
+    <copyright>true</copyright>
+    <type>application</type>
+    <target>tei-editoriale</target>
+    <prepare>pre-install.xql</prepare>
+    <finish/>
+<deployed>2021-01-03T16:40:50.355+01:00</deployed>
+</meta>
