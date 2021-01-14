@@ -19,6 +19,7 @@
     <section>
         <head>Les difficultés rencontrées</head>
         <p>Les documents ont des structures un peu différents. Par exemple, un des documents n'a pas de parties, juste des chapîtres.</p>
-        <p>Un autre problème est l'application des CSS. Le fichier par défaut ne marche pas.</p>
+        <p>Un autre problème est l'application des CSS. Pour faire marcher un fichier avec des css il me fallait faire des efforts.</p>
+        <p>Selon le consigne il fallait afficher le contenu des livres générés des fichiers xml. Cela ralentit le site, pourtant je n'ai pas trouvé une bonne solutiton pour le corriger.</p>
     </section>
 </description>

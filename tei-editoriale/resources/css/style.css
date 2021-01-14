@@ -1,2 +1,324 @@
-/* Application styles could go here */
+body
+{
+    margin: auto;
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+h2{font-family: "dreamwood"; color:#4E3626;}
+
+h3, h4, h5, h6 {font-family:"Simvoni"; color:#4E3626;}
+
+
+p {text-align: justify;
+   width: 99%;
+   text-indent: 40px;
+   color:#4E3626;
+   font-family: "Calson Pro";
+  }
+
+
+a {color:#371C00}
+
+input {
+    margin-top:10px;
+    margin-left:0;
+    margin-bottom:20px;
+    margin-right:10px;
+    color:#492701;
+    font-family:"Dogtown";
+}
+
+input[type='radio']:after {
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        top: 0px;
+        left: 0px;
+        position: relative;
+        background-color: #d1d3d1;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid #492701;
+    }
+    
+input[type='radio']:checked:after {
+        width: 13px;
+        height: 13px;
+        border-radius: 10px;
+        top: 0px;
+        left: 0px;
+        position: relative;
+        background-color: #60331B;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid #d1d3d1;
+    }
+    
+input[type='checkbox']:checked:after {
+        width: 7px;
+        height: 7px;
+        top: 0px;
+        left: 0px;
+        position: relative;
+        background-color: #60331B;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 3px solid #d1d3d1;
+    }
+    
+input[type='checkbox']:after {
+        width: 10px;
+        height: 10px;
+        top: 0px;
+        left: 0px;
+        position: relative;
+        background-color: #d1d3d1;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid #d1d3d1;
+    }
+
+button {border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 9px;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+        color: #524f4e;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+        transition: .4s;
+        font-family:"Dogtown";
+        cursor: pointer
+       }
+
+
+label {
+    cursor: pointer;
+    font-family: "Dogtown";
+    color:#492701 ;
+}
+
+mark {
+    
+    padding:2px;
+    padding-left: 3px;
+    border-radius: 10% / 50%;
+    background-color:#1E5218;
+    color:#F2F1D9;}
+
+.search {float: left; width: 33%;}
+
+.search:after {clear:both;}
+
+
+.menu {display: flex;
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       z-index: 999
+      }
+
+.menu li {float: left;
+          flex-basis: auto;
+          flex-grow: 1;
+          width: 16%;
+          height: 10%;
+          background-image: url(../images/toolbar.png);
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          
+}
+
+.menu a {display: block;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: underline;
+   font-weight: bold;
+   color: #492701;
+   font-family: "amsterdamregular";
+   
+
+  }
+
+.menu li:hover {transform: translateY(-5px)}
+
+
+@media screen and (max-width: 840px) {.menu {font-size: 10px} html {background-position: unset;}}
+
+
+
+
+@font-face {
+    font-family: 'amsterdamregular';
+    src: url('../fonts/Amsterdam-zvgqm/Amsterdam-zvgqm.ttf') format('ttf'),
+         url('../fonts/Amsterdam-zvgqm/Amsterdam-zvgqm.woff2') format('woff2'),
+         url('../fonts/Amsterdam-zvgqm/Amsterdam-zvgqm.woff') format('woff')
+         ;
+    font-weight: normal;
+    font-style: normal
+}
+@font-face {
+    font-family: 'dreamwood';
+    src: url('../fonts/DreamwoodDemoRegular/DreamwoodDemoRegular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/DreamwoodDemoRegular/DreamwoodDemoRegular.woff2') format('woff2'),
+         url('../fonts/DreamwoodDemoRegular/DreamwoodDemoRegular.woff') format('woff'),
+         url('../fonts/DreamwoodDemoRegular/DreamwoodDemoRegular.svg#dreamwood_demoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Caslon Pro';
+    src: url('../fonts/CalsonPro/ACaslonPro-BoldItalic.eot');
+    src: url('../fonts/CalsonPro/ACaslonPro-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/CalsonPro/ACaslonPro-BoldItalic.woff2') format('woff2'),
+        url('../fonts/CalsonPro/ACaslonPro-BoldItalic.woff') format('woff'),
+        url('../fonts/CalsonPro/ACaslonPro-BoldItalic.ttf') format('truetype'),
+        url('../fonts/CalsonPro/ACaslonPro-BoldItalic.svg#ACaslonPro-BoldItalic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caslon Pro';
+    src: url('../fonts/CalsonPro/ACaslonPro-Italic.eot');
+    src: url('../fonts/CalsonPro/ACaslonPro-Italic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/CalsonPro/ACaslonPro-Italic.woff2') format('woff2'),
+        url('../fonts/CalsonPro/ACaslonPro-Italic.woff') format('woff'),
+        url('../fonts/CalsonPro/ACaslonPro-Italic.ttf') format('truetype'),
+        url('../fonts/CalsonPro/ACaslonPro-Italic.svg#ACaslonPro-Italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caslon Pro';
+    src: url('../fonts/CalsonPro/ACaslonPro-Bold.eot');
+    src: url('../fonts/CalsonPro/ACaslonPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/CalsonPro/ACaslonPro-Bold.woff2') format('woff2'),
+        url('../fonts/CalsonPro/ACaslonPro-Bold.woff') format('woff'),
+        url('../fonts/CalsonPro/ACaslonPro-Bold.ttf') format('truetype'),
+        url('../fonts/CalsonPro/ACaslonPro-Bold.svg#ACaslonPro-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caslon Pro';
+    src: url('../fonts/CalsonPro/ACaslonPro-SemiboldItalic.eot');
+    src: url('../fonts/CalsonPro/ACaslonPro-SemiboldItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/CalsonPro/ACaslonPro-SemiboldItalic.woff2') format('woff2'),
+        url('../fonts/CalsonPro/ACaslonPro-SemiboldItalic.woff') format('woff'),
+        url('../fonts/CalsonPro/ACaslonPro-SemiboldItalic.ttf') format('truetype'),
+        url('../fonts/CalsonPro/ACaslonPro-SemiboldItalic.svg#ACaslonPro-SemiboldItalic') format('svg');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caslon Pro';
+    src: url('../fonts/CalsonPro/ACaslonPro-Semibold.eot');
+    src: url('../fonts/CalsonPro/ACaslonPro-Semibold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/CalsonPro/ACaslonPro-Semibold.woff2') format('woff2'),
+        url('../fonts/CalsonPro/ACaslonPro-Semibold.woff') format('woff'),
+        url('../fonts/CalsonPro/ACaslonPro-Semibold.ttf') format('truetype'),
+        url('../fonts/CalsonPro/ACaslonPro-Semibold.svg#ACaslonPro-Semibold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Caslon Pro';
+    src: url('../fonts/CalsonPro/ACaslonPro-Regular.eot');
+    src: url('../fonts/CalsonPro/ACaslonPro-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/CalsonPro/ACaslonPro-Regular.woff2') format('woff2'),
+        url('../fonts/CalsonPro/ACaslonPro-Regular.woff') format('woff'),
+        url('../fonts/CalsonPro/ACaslonPro-Regular.ttf') format('truetype'),
+        url('../fonts/CalsonPro/ACaslonPro-Regular.svg#ACaslonPro-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Dogtown';
+    src: url('../fonts/DogtownTypewriter/DogtownTypewriter.eot');
+    src: url('../fonts/DogtownTypewriter/DogtownTypewriter.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/DogtownTypewriter/DogtownTypewriter.woff2') format('woff2'),
+        url('../fonts/DogtownTypewriter/DogtownTypewriter.woff') format('woff'),
+        url('../fonts/DogtownTypewriter/DogtownTypewriter.ttf') format('truetype'),
+        url('../fonts/DogtownTypewriter/DogtownTypewriter.svg#DogtownTypewriter') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Simvoni';
+    src: url('../fonts/Simvoni/SimvoniBold.eot');
+    src: url('../fonts/Simvoni/SimvoniBold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Simvoni/SimvoniBold.woff2') format('woff2'),
+        url('../fonts/Simvoni/SimvoniBold.woff') format('woff'),
+        url('../fonts/Simvoni/SimvoniBold.ttf') format('truetype'),
+        url('../fonts/Simvoni/SimvoniBold.svg#SimvoniBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Simvoni';
+    src: url('../fonts/Simvoni/SimvoniRegular.eot');
+    src: url('../fonts/Simvoni/SimvoniRegular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Simvoni/SimvoniRegular.woff2') format('woff2'),
+        url('../fonts/Simvoni/SimvoniRegular.woff') format('woff'),
+        url('../fonts/Simvoni/SimvoniRegular.ttf') format('truetype'),
+        url('../fonts/Simvoni/SimvoniRegular.svg#SimvoniRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Simvoni';
+    src: url('../fonts/Simvoni/SimvoniBoldItalic.eot');
+    src: url('../fonts/Simvoni/SimvoniBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Simvoni/SimvoniBoldItalic.woff2') format('woff2'),
+        url('../fonts/Simvoni/SimvoniBoldItalic.woff') format('woff'),
+        url('../fonts/Simvoni/SimvoniBoldItalic.ttf') format('truetype'),
+        url('../fonts/Simvoni/SimvoniBoldItalic.svg#SimvoniBoldItalic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Simvoni';
+    src: url('../fonts/Simvoni/SimvoniItalic.eot');
+    src: url('../fonts/Simvoni/SimvoniItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Simvoni/SimvoniItalic.woff2') format('woff2'),
+        url('../fonts/Simvoni/SimvoniItalic.woff') format('woff'),
+        url('../fonts/Simvoni/SimvoniItalic.ttf') format('truetype'),
+        url('../fonts/Simvoni/SimvoniItalic.svg#SimvoniItalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
 

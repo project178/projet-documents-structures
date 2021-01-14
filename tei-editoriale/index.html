@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
-    <div class="row">
-            <div class="col-md-6">
-                <div data-template="app:generate-page" data-template-page="index"/>
-            </div>
-        </div>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head data-template="templates:surround" data-template-with="templates/page.html" data-template-using="head" data-template-at="background">
+        <link rel="stylesheet" type="text/css" href="./resources/css/style_index.css"/>
+    </head>
+<div data-template="templates:surround" data-template-with="templates/page.html" data-template-using="body" data-template-at="content">
+        <div data-template="app:generate-page" data-template-page="index"/>
 </div>
+</html>

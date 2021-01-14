@@ -26,5 +26,5 @@ Un site avec 3 page : une page d'accueil générée par XSLT du XML qui est vér
 
 ### Résultats
 
-Voici un exemple de recherche sur le site.
+Voici un exemple de l'utilisation du site.
 ![Recherche des mots "Madame" et "le" en appliquant des divers filtres](https://github.com/project178/trash/blob/master/demo.gif)

@@ -1,0 +1,10 @@
+html
+{
+    background-image:url($app-root/resources/images/background_index.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%
+}
+
+#index a{text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white}

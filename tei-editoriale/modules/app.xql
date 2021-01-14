@@ -10,14 +10,14 @@ import module namespace transform="http://exist-db.org/xquery/transform";
 
 declare function app:generate-page($node as node(), $model as map(*), $page as xs:string) as element (div)
 {
-    element div {transform:transform(doc("/db/apps/tei-editoriale/index.xml"), doc("/db/apps/tei-editoriale/index.xsl"), ())}
+    element div {transform:transform(doc($config:app-root||"/index.xml"), doc($config:app-root||"/index.xsl"), ())}
 
 };
 
 declare function app:form($node as node(), $model as map(*))
 {
     let $case := request:get-parameter("case", ())
-    let $req := request:get-parameter("search", ())
+    let $req := request:get-parameter("query", ())
     let $author := request:get-parameter("author", ())
     let $title := request:get-parameter("title", ())
     let $sd := request:get-parameter("start_date", ())
@@ -28,18 +28,19 @@ declare function app:form($node as node(), $model as map(*))
     return element form
     {
         attribute action {},
-        element p {"Indiquez des paramétres de recherche."},
+            element div {attribute class {"search"},
+            element br {},
+            element br {},
             element label
             {
-                attribute for {"search"},
+                attribute for {"query"},
                 "Saisissez votre recherche"
             },
             element br {},
-            element input {attribute name {"search"}, attribute value {$req}},
+            element input {attribute name {"query"}, attribute value {$req}},
             element br {},
             element input
             {
-                attribute style {"margin:10px;margin-left:0"},
                 attribute type {"radio"},
                 attribute id {"case-sensitive"},
                 attribute name {"case"},
@@ -50,7 +51,6 @@ declare function app:form($node as node(), $model as map(*))
             element br {},
             element input
             {
-                attribute style {"margin-right:10px;margin-bottom:20px"},
                 attribute type {"radio"},
                 attribute id {"case-insensitive"},
                 attribute name {"case"},
@@ -59,15 +59,15 @@ declare function app:form($node as node(), $model as map(*))
             },
             element label {attribute for {"case-insensitive"}, "Insensible à la casse"},
             element br {},
-            element button {"Lancer une recherche"},
+            element button {"Lancer une recherche"}},
             element br {},
             element br {},
-            element p {"Précisez des paramètres"},
-            element label {attribute for {"author"}, "Auteur"},
+            element div{
+                attribute class {"search"},
+                element label {attribute for {"author"}, "Auteur"},
                 element br {},
                 element input
                 {
-                    attribute style {"margin-right:10px"},
                     attribute type {"checkbox"},
                     attribute id {"Flaubert"},
                     attribute name {"author"},
@@ -78,7 +78,6 @@ declare function app:form($node as node(), $model as map(*))
                 element br {},
                 element input
                 {
-                    attribute style {"margin-right:10px"},
                     attribute type {"checkbox"},
                     attribute id {"Hesse"},
                     attribute name {"author"},
@@ -89,7 +88,6 @@ declare function app:form($node as node(), $model as map(*))
                 element br {},
                 element input
                 {
-                    attribute style {"margin-right:10px"},
                     attribute type {"checkbox"},
                     attribute id {"Bronte"},
                     attribute name {"author"},
@@ -103,7 +101,6 @@ declare function app:form($node as node(), $model as map(*))
                 element br {},
                 element input
                 {
-                    attribute style {"margin-right:10px"},
                     attribute type {"checkbox"},
                     attribute id {"Bovary"},
                     attribute name {"title"},
@@ -114,7 +111,6 @@ declare function app:form($node as node(), $model as map(*))
                 element br {},
                 element input
                 {
-                    attribute style {"margin-right:10px"},
                     attribute type {"checkbox"},
                     attribute id {"Siddhartha"},
                     attribute name {"title"},
@@ -125,16 +121,14 @@ declare function app:form($node as node(), $model as map(*))
                 element br {},
                 element input
                 {
-                    attribute style {"margin-right:10px"},
                     attribute type {"checkbox"},
                     attribute id {"WH"},
                     attribute name {"title"},
                     attribute value {"Wuthering Heights"},
                     if (contains($title, "Wuthering Heights") or not(exists($author))) then attribute checked {"checked"} else ()
                 },
-                element label {attribute for {"WH"}, "Wuthering Heights"},
-                element br {},
-                element br {},
+                element label {attribute for {"WH"}, "Wuthering Heights"}},
+            element div {attribute class {"search"},    
             element label {attribute for {"start"}, "Écrit après l'année"},
                 element br {},
                 element input
@@ -186,8 +180,8 @@ declare function app:form($node as node(), $model as map(*))
                     if (exists($fd1)) then attribute value {$fd1} else attribute value {"2021-01-01"}
                 },
                 element br {},
-                element br {},
-                element button {"Filtrer des résultats"}
+                element br {}
+            }
         
     }
 };
@@ -195,8 +189,8 @@ declare function app:form($node as node(), $model as map(*))
 
 declare function app:normalize($p as node(), $keepformating as xs:boolean)
 {
-    if ($keepformating) then transform:transform($p, doc("/db/apps/tei-editoriale/templates/change_format.xsl"), ())
-    else transform:transform($p, doc("/db/apps/tei-editoriale/templates/remove_format.xsl"), ())
+    if ($keepformating) then transform:transform($p, doc($config:app-root||"/templates/change_format.xsl"), ())
+    else transform:transform($p, doc($config:app-root||"/templates/remove_format.xsl"), ())
     
 };
 
@@ -204,7 +198,7 @@ declare function app:normalize($p as node(), $keepformating as xs:boolean)
 declare function app:find($node as node(), $model as map(*))
 {
     let $case := request:get-parameter("case", ())
-    let $req := if ($case = "insensetive") then lower-case(request:get-parameter("search", ())) else request:get-parameter("search", ())
+    let $req := if ($case = "insensetive") then lower-case(request:get-parameter("query", ())) else request:get-parameter("query", ())
     let $l := string-length($req)
     let $author := request:get-parameter("author", ())
     let $title := request:get-parameter("title", ())
@@ -212,7 +206,7 @@ declare function app:find($node as node(), $model as map(*))
     let $fd := request:get-parameter("finish_date", ())
     let $sd1 := request:get-parameter("start_date1", ())
     let $fd1 := request:get-parameter("finish_date1", ())
-        for $modified_book in collection("/db/apps/tei-editoriale/data")
+        for $modified_book in collection($config:data-root)
         let $book := app:normalize($modified_book, false())
         let $book_author := $book/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:author/text()
         let $book_title := $book/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title/text()
@@ -224,14 +218,14 @@ declare function app:find($node as node(), $model as map(*))
             let $starts := insert-before(if ($case = "insensetive") then functx:index-of-string(lower-case($t), $req) else functx:index-of-string($t, $req), 9999999999999, (9999999999999))
             let $ends := insert-before((for $start in $starts where $start != 9999999999999 return $start+$l), 1, 1)
             return
-                (element h4{$book_title},
-                element h6 {concat("par ", $book_author)},
+                (element h3{$book_title},
+                element h4 {concat("par ", $book_author)},
                 element p
                 {for $start at $i in $starts
                     return if ($start != 9999999999999)
                         then (substring($t, $ends[$i], $start - $ends[$i]), <mark>{substring($t, $start, $l)}</mark>)
                         else substring($t, $ends[$i], $start)})
-    else(element h4{$book_title}, element h6 {concat("par ", $book_author)})
+    else(element h3{$book_title}, element h4 {concat("par ", $book_author)})
     else ()
 };
 
@@ -240,7 +234,7 @@ declare function app:generate($node as node(), $model as map(*)) as element(div)
     element div
     {
     let $shown := request:get-parameter("shown", ())
-    for $modified_book in collection("/db/apps/tei-editoriale/data")
+    for $modified_book in collection($config:data-root)
         let $book := app:normalize($modified_book, true())
         let $title := $book/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:title/text()
         let $author := $book/tei:teiHeader/tei:fileDesc/tei:titleStmt/tei:author/text()
@@ -258,7 +252,7 @@ declare function app:generate($node as node(), $model as map(*)) as element(div)
             {
                 if (replace($title, " ", "-") = $shown) then () else attribute style {"display:none"},
                 
-                (element h4 {concat("par ", $author)},
+                (element h3 {concat("par ", $author)},
                 $text/tei:p,
                 for $part in $text/tei:div
                     let $part_head := $part/tei:head
@@ -267,7 +261,7 @@ declare function app:generate($node as node(), $model as map(*)) as element(div)
                         element a
                         {
                             attribute href {concat("http://localhost:8080/exist/apps/tei-editoriale/visual.html?", app:change-params($part_head))},
-                            element h5 {$part_head}
+                            element h4 {$part_head}
                             
                         }
                         else (),
@@ -282,7 +276,7 @@ declare function app:generate($node as node(), $model as map(*)) as element(div)
                                     element a
                                     {
                                         attribute href {concat("http://localhost:8080/exist/apps/tei-editoriale/visual.html?", app:change-params($chapter_head))},
-                                        element h6 {$chapter_head}
+                                        element h5 {$chapter_head}
                                     },
                                     element div
                                     {

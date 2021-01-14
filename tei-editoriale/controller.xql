@@ -34,6 +34,12 @@ else if (contains($exist:path, "/$shared/")) then
             <set-header name="Cache-Control" value="max-age=3600, must-revalidate"/>
         </forward>
     </dispatch>
+else if (contains($exist:path,"$app-root")) then
+<dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+    <forward url="{$exist:controller}/{substring-after($exist:path, '$app-root/')}">
+        <set-header name="Cache-Control" value="no"/>
+    </forward>
+</dispatch>
 else
     (: everything else is passed through :)
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">

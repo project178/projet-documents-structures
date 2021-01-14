@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
-    <div class="row">
-        <h1>Recherche</h1>
-        <div class="alert alert-success">
-            <p class="app:form"/>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <p class="app:find"/>
-            </div>
-            
-        </div>
-    </div>
-
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head data-template="templates:surround" data-template-with="templates/page.html" data-template-using="head" data-template-at="background">
+        <link rel="stylesheet" type="text/css" href="./resources/css/style_search.css"/>
+    </head>
+<div data-template="templates:surround" data-template-with="templates/page.html" data-template-using="body" data-template-at="content">
+        <p class="app:form"/>
+        <p class="app:find"/>
 </div>
+</html>
